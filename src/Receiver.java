@@ -25,18 +25,18 @@ public class Receiver extends Thread {
                 String nachricht = new String(buffer, 0, anzahlZeichen);
                 String[] nachrichten = nachricht.split("\n");
 
-                for (String lol : nachrichten) {
-                    System.out.println(lol);
-                }
 
                 if (nachrichten[1].trim().equals("error")) {
-
-                    System.out.println("Error!!!");
+                    System.out.println("Error: " + nachrichten[4]);
+                    throw new Exception();
 
                 } else if (nachrichten[1].trim().equals("user text notify")) {
 
                     for (int j = 6; j < nachrichten.length; j++) {
-                        System.out.println(gibSchon(nachrichten[2]) + nachrichten[j]);
+                        //String sender = "(" + nachrichten[2] + ") ";
+                        //System.out.println( sender.concat(nachrichten[j]) );
+                        System.out.print("(" + nachrichten[2]);
+                        System.out.println( "(" + nachrichten[2].trim() + ") " + nachrichten[j] );
 
                     }
                 }
@@ -44,14 +44,9 @@ public class Receiver extends Thread {
             }
 
         } catch (Exception e) {
-            System.out.println("Fehler beim Einlesen der Nachrichten!");
-            e.toString();
+            System.exit(0);
         }
 
-    }
-
-    public static String gibSchon(String jo){
-        return "(" + jo + ") ";
     }
 
 }

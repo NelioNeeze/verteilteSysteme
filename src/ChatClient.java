@@ -15,9 +15,6 @@ public class ChatClient {
 
             Socket sock = new Socket("dbl44.beuth-hochschule.de", 21);
 
-            Receiver receive = new Receiver(sock);
-            receive.start();
-
             OutputStreamWriter osr = new OutputStreamWriter(sock.getOutputStream());
             PrintWriter printWriter = new PrintWriter(osr);
 
@@ -28,6 +25,9 @@ public class ChatClient {
             printWriter.flush();
 
             System.out.println("Joined as user " + userName + " ...");
+
+            Receiver receive = new Receiver(sock);
+            receive.start();
 
 
             while (true) {
@@ -57,7 +57,7 @@ public class ChatClient {
 
 
         } catch (Exception e) {
-            System.out.println("Es konnte keine Verbindung zum Server hergestellt werden!");
+            System.out.println("Verbindung yum Server abgebrochen!");
             e.getMessage();
         }
 

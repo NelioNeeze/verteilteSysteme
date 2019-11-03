@@ -57,7 +57,7 @@ public class ChatClient {
 
 
         } catch (Exception e) {
-            System.out.println("Verbindung yum Server abgebrochen!");
+            System.out.println("Verbindung zum Server untergebrochen!");
             e.getMessage();
         }
 

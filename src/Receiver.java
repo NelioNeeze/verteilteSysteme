@@ -27,18 +27,16 @@ public class Receiver extends Thread {
 
 
                 if (nachrichten[1].trim().equals("error")) {
+
                     System.out.println("Error: " + nachrichten[4]);
                     throw new Exception();
 
                 } else if (nachrichten[1].trim().equals("user text notify")) {
 
                     for (int j = 6; j < nachrichten.length; j++) {
-                        //String sender = "(" + nachrichten[2] + ") ";
-                        //System.out.println( sender.concat(nachrichten[j]) );
-                        System.out.print("(" + nachrichten[2]);
                         System.out.println( "(" + nachrichten[2].trim() + ") " + nachrichten[j] );
-
                     }
+
                 }
 
             }
